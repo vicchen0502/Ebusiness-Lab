@@ -1,16 +1,8 @@
 #!/usr/bin/python3
+import os,random,json,serial,time,binascii,datetime,threading,numpy
 import paho.mqtt.client as mqtt
-import os
-import random
-import json
 import RPi.GPIO
-import serial
-import time
-import binascii
 from collections import deque
-import datetime
-import threading
-import numpy
 class Mqtt():
     mqtt_client,mqtt_options,resource_info,callbacks, get_number  = None,None,None,None,None
     def __init__(self):
