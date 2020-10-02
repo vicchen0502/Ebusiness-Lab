@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 import os,random,json,serial,time,binascii,datetime,threading,numpy
 import paho.mqtt.client as mqtt
 import RPi.GPIO
@@ -47,7 +48,8 @@ class Mqtt():
         resources = self.resource_info['resources']
         for res in resources:
             if (resource_id == str(res["resourceid"])):
-                vals = "{\"value\":" + str(value) + "}"
+                vals = {"values":values}
+                vals = json.dump(vals)
                 self.mqtt_client.publish(str(res["topic"]), vals, 0, True)
                 break
     def subscribe_by_id(self, resource_id):
